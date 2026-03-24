@@ -1,220 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopEasy (Beta)</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ShopEasy (Beta)</title>
 
-<style>
-body {
-    font-family: Arial;
-    margin: 0;
-    background: #f4f6f9;
-}
+		<style>
+			body {
+				font-family: Arial;
+				margin: 0;
+				background: #f4f6f9;
+			}
 
-/* Header */
-.header {
-    background: #87CEEB;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-}
+			/* Header */
+			.header {
+				background: #87ceeb;
+				color: white;
+				padding: 20px;
+				text-align: center;
+				position: relative;
+			}
 
-.cart {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 22px;
-    cursor: pointer;
-}
+			.cart {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				font-size: 22px;
+				cursor: pointer;
+			}
 
-.cart-count {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background: red;
-    color: white;
-    border-radius: 50%;
-    padding: 3px 7px;
-    font-size: 12px;
-}
+			.cart-count {
+				position: absolute;
+				top: -8px;
+				right: -10px;
+				background: red;
+				color: white;
+				border-radius: 50%;
+				padding: 3px 7px;
+				font-size: 12px;
+			}
 
-.container {
-    padding: 20px;
-}
+			.container {
+				padding: 20px;
+			}
 
-.product {
-    background: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-}
+			.product {
+				background: white;
+				padding: 15px;
+				margin-bottom: 20px;
+				border-radius: 10px;
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
 
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin: 5px 5px 0 0;
-}
+			button {
+				padding: 10px;
+				border: none;
+				border-radius: 6px;
+				cursor: pointer;
+				margin: 5px 5px 0 0;
+			}
 
-.buy { background: green; color: white; }
-.fake-btn { background: orange; color: white; }
-.secondary { background: #ccc; }
+			.buy {
+				background: green;
+				color: white;
+			}
+			.fake-btn {
+				background: orange;
+				color: white;
+			}
+			.secondary {
+				background: #ccc;
+			}
 
-.hidden {
-    margin-top: 800px;
-    background: lightblue;
-    padding: 20px;
-    text-align: center;
-}
+			.hidden {
+				margin-top: 800px;
+				background: lightblue;
+				padding: 20px;
+				text-align: center;
+			}
 
-.footer {
-    margin-top: 800px;
-    background: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+			.footer {
+				margin-top: 800px;
+				background: #333;
+				color: white;
+				padding: 20px;
+				text-align: center;
+			}
 
-textarea, input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-}
+			textarea,
+			input {
+				width: 90%;
+				padding: 10px;
+				border-radius: 6px;
+				border: 1px solid #ccc;
+				margin-bottom: 10px;
+			}
 
-/* Mobile */
-@media(max-width:600px){
-    .container { padding: 10px; }
-}
-</style>
-</head>
+			/* Mobile */
+			@media (max-width: 600px) {
+				.container {
+					padding: 10px;
+				}
+			}
+		</style>
+		<script type="text/javascript">
+			(function (c, l, a, r, i, t, y) {
+				c[a] =
+					c[a] ||
+					function () {
+						(c[a].q = c[a].q || []).push(arguments);
+					};
+				t = l.createElement(r);
+				t.async = 1;
+				t.src = "https://www.clarity.ms/tag/" + i;
+				y = l.getElementsByTagName(r)[0];
+				y.parentNode.insertBefore(t, y);
+			})(window, document, "clarity", "script", "w0ukr8g1sv");
+		</script>
+	</head>
 
-<body>
+	<body>
+		<div class="header">
+			<h2>ShopEasy (Beta)</h2>
+			<p>Test our new shopping experience!</p>
 
-<div class="header">
-    <h2>ShopEasy (Beta)</h2>
-    <p>Test our new shopping experience!</p>
+			<!-- Cart (dead click) -->
+			<div class="cart">
+				🛒
+				<span class="cart-count" id="cartCount">0</span>
+			</div>
+		</div>
 
-    <!-- Cart (dead click) -->
-    <div class="cart">
-        🛒
-        <span class="cart-count" id="cartCount">0</span>
-    </div>
-</div>
+		<div class="container">
+			<!-- Products -->
+			<div class="product">
+				<h3>Wireless Headphones</h3>
+				<p>$99.99</p>
+				<button class="buy" onclick="addToCart()">Buy Now</button>
+				<button class="fake-btn">Add to Wishlist</button>
+				<button class="secondary">Compare</button>
+			</div>
 
-<div class="container">
+			<div class="product">
+				<h3>Smart Watch</h3>
+				<p>$149.99</p>
+				<button class="buy">Buy Now</button>
+				<!-- DEAD CLICK -->
+				<button class="fake-btn">Save for Later</button>
+			</div>
 
-    <!-- Products -->
-    <div class="product">
-        <h3>Wireless Headphones</h3>
-        <p>$99.99</p>
-        <button class="buy" onclick="addToCart()">Buy Now</button>
-        <button class="fake-btn">Add to Wishlist</button>
-        <button class="secondary">Compare</button>
-    </div>
+			<div class="product">
+				<h3>Bluetooth Speaker</h3>
+				<p>$79.99</p>
+				<button class="buy" onclick="addToCart()">Buy Now</button>
+				<button class="fake-btn">Add to Cart</button>
+			</div>
 
-    <div class="product">
-        <h3>Smart Watch</h3>
-        <p>$149.99</p>
-        <button class="buy">Buy Now</button> <!-- DEAD CLICK -->
-        <button class="fake-btn">Save for Later</button>
-    </div>
+			<div class="product">
+				<h3>Gaming Mouse</h3>
+				<p>$49.99</p>
+				<button class="buy" onclick="addToCart()">Buy Now</button>
+				<button class="fake-btn">Quick View</button>
+				<button class="secondary">Compare</button>
+			</div>
 
-    <div class="product">
-        <h3>Bluetooth Speaker</h3>
-        <p>$79.99</p>
-        <button class="buy" onclick="addToCart()">Buy Now</button>
-        <button class="fake-btn">Add to Cart</button>
-    </div>
+			<div class="product">
+				<h3>Mechanical Keyboard</h3>
+				<p>$129.99</p>
+				<button class="buy" onclick="addToCart()">Buy Now</button>
+				<button class="fake-btn">Add to Wishlist</button>
+			</div>
 
-    <div class="product">
-        <h3>Gaming Mouse</h3>
-        <p>$49.99</p>
-        <button class="buy" onclick="addToCart()">Buy Now</button>
-        <button class="fake-btn">Quick View</button>
-        <button class="secondary">Compare</button>
-    </div>
+			<!-- Rage Click Section -->
+			<div class="product">
+				<h3>Limited Time Offer</h3>
+				<p>Click below to claim your discount</p>
+				<button onclick="fakeDelay()">Claim Offer</button>
+				<p id="delayMsg"></p>
+			</div>
 
-    <div class="product">
-        <h3>Mechanical Keyboard</h3>
-        <p>$129.99</p>
-        <button class="buy" onclick="addToCart()">Buy Now</button>
-        <button class="fake-btn">Add to Wishlist</button>
-    </div>
+			<!-- Newsletter -->
+			<div class="product">
+				<h3>Newsletter Signup</h3>
+				<input type="text" placeholder="Enter email" />
+				<button onclick="noFeedback()">Subscribe</button>
+				<p style="font-size: 12px; color: gray">(No confirmation shown)</p>
+			</div>
 
-    <!-- Rage Click Section -->
-    <div class="product">
-        <h3>Limited Time Offer</h3>
-        <p>Click below to claim your discount</p>
-        <button onclick="fakeDelay()">Claim Offer</button>
-        <p id="delayMsg"></p>
-    </div>
+			<!-- Feedback -->
+			<div class="product">
+				<h3>Feedback</h3>
+				<p>Let us know how we can improve your experience</p>
 
-    <!-- Newsletter -->
-    <div class="product">
-        <h3>Newsletter Signup</h3>
-        <input type="text" placeholder="Enter email">
-        <button onclick="noFeedback()">Subscribe</button>
-        <p style="font-size:12px; color:gray;">(No confirmation shown)</p>
-    </div>
+				<form action="https://formspree.io/f/mlgpqnel" method="POST">
+					<textarea
+						name="feedback"
+						placeholder="Enter your feedback..."
+						required
+					></textarea>
+					<input
+						type="email"
+						name="email"
+						placeholder="Your email (optional)"
+					/>
+					<button type="submit">Submit Feedback</button>
+				</form>
+			</div>
+		</div>
 
-    <!-- Feedback -->
-    <div class="product">
-        <h3>Feedback</h3>
-        <p>Let us know how we can improve your experience</p>
+		<!-- Hidden Deals -->
+		<div class="hidden">
+			<h3>🔥 Hidden Deal #1</h3>
+			<p><strong>Buy any 2 items and get 50% off the second item!</strong></p>
+			<p>Only visible to users who scroll.</p>
+		</div>
 
-        <form action="https://formspree.io/f/mlgpqnel" method="POST">
-            <textarea name="feedback" placeholder="Enter your feedback..." required></textarea>
-            <input type="email" name="email" placeholder="Your email (optional)">
-            <button type="submit">Submit Feedback</button>
-        </form>
-    </div>
+		<div class="hidden">
+			<h3>💡 Hidden Deal #2</h3>
+			<p>
+				<strong
+					>Get 25% off your total purchase when you buy 3 or more items.</strong
+				>
+			</p>
+			<p>Exclusive scroll reward.</p>
+		</div>
 
-</div>
+		<div class="footer">
+			<p>Contact Us | Terms | Privacy</p>
+		</div>
 
-<!-- Hidden Deals -->
-<div class="hidden">
-    <h3>🔥 Hidden Deal #1</h3>
-    <p><strong>Buy any 2 items and get 50% off the second item!</strong></p>
-    <p>Only visible to users who scroll.</p>
-</div>
+		<script>
+			let cart = 0;
 
-<div class="hidden">
-    <h3>💡 Hidden Deal #2</h3>
-    <p><strong>Get 25% off your total purchase when you buy 3 or more items.</strong></p>
-    <p>Exclusive scroll reward.</p>
-</div>
+			function addToCart() {
+				cart++;
+				document.getElementById("cartCount").innerText = cart;
+			}
 
-<div class="footer">
-    <p>Contact Us | Terms | Privacy</p>
-</div>
+			function fakeDelay() {
+				let msg = document.getElementById("delayMsg");
+				msg.innerText = "Processing...";
 
-<script>
-let cart = 0;
+				setTimeout(() => {
+					msg.innerText = "Offer claimed!";
+				}, 3000);
+			}
 
-function addToCart() {
-    cart++;
-    document.getElementById("cartCount").innerText = cart;
-}
-
-function fakeDelay() {
-    let msg = document.getElementById("delayMsg");
-    msg.innerText = "Processing...";
-
-    setTimeout(() => {
-        msg.innerText = "Offer claimed!";
-    }, 3000);
-}
-
-function noFeedback() {
-    // intentionally empty
-}
-</script>
-
-</body>
+			function noFeedback() {
+				// intentionally empty
+			}
+		</script>
+	</body>
 </html>
